@@ -1,0 +1,27 @@
+
+# Ignore sensitive config files
+config/database.php
+
+# Ignore entire config folder (safer)
+config/
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+
+# VS Code settings
+.vscode/
+
+# Cache and logs folders (if exist)
+logs/
+cache/
+
+# Temporary files
+*.tmp
+*.log
+
+# Node modules (if using JS)
+node_modules/
+
+# Laravel vendor folder (if using Laravel)
+vendor/
