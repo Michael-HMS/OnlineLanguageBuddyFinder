@@ -1,23 +1,75 @@
-<script src="/OnlineLanguageBuddyFinder/Views/profile/updateProfile.js" defer></script>
+<link rel="stylesheet" href="/OnlineLanguageBuddyFinder/Views/styles/auth.css">
 
-<form id="profileForm">
-  <label>
-    Username:
-    <input type="text" name="username" value="" id="usernameInput" />
-  </label>
-  <label>
-    Email:
-    <input type="email" name="email" value="" id="emailInput" />
-  </label>
-  <label>
-    Native Language:
-    <input type="text" name="native_language" value="" id="nativeLangInput" />
-  </label>
-  <label>
-    Learning Language:
-    <input type="text" name="learning_language" value="" id="learningLangInput" />
-  </label>
-  <button type="submit">Update Profile</button>
-</form>
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h2>👤 Update Your Profile</h2>
+      <p>Keep your information up to date to find better matches</p>
+    </div>
 
-<div id="updateStatus"></div>
+    <div id="errorMessage" class="error-message" style="display: none;"></div>
+    <div id="successMessage" class="success-message" style="display: none;"></div>
+
+    <form id="profileForm" class="auth-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input 
+          type="text" 
+          id="username" 
+          name="username" 
+          placeholder="Enter your username"
+          required
+          autocomplete="username"
+          minlength="3"
+          maxlength="50"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="Enter your email"
+          required
+          autocomplete="email"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="native_language">Native Language</label>
+        <input 
+          type="text" 
+          id="native_language" 
+          name="native_language" 
+          placeholder="e.g., English, Spanish, French"
+          required
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="learning_language">Language You're Learning</label>
+        <input 
+          type="text" 
+          id="learning_language" 
+          name="learning_language" 
+          placeholder="e.g., Spanish, French, Japanese"
+          required
+          autocomplete="off"
+        >
+      </div>
+
+      <button type="submit" class="auth-button" id="updateButton">
+        Update Profile
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      <p><a href="/OnlineLanguageBuddyFinder/index.php?page=matches">← Back to Matches</a></p>
+    </div>
+  </div>
+</div>
+
+<script src="/OnlineLanguageBuddyFinder/Views/profile/updateProfile.js"></script>
