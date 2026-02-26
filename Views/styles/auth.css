@@ -174,12 +174,14 @@
     pointer-events: none;
 }
 
-.loading .auth-button {
+.loading .auth-button,
+.auth-button.is-loading {
     position: relative;
     color: transparent;
 }
 
-.loading .auth-button::after {
+.loading .auth-button::after,
+.auth-button.is-loading::after {
     content: "";
     position: absolute;
     width: 20px;

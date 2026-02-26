@@ -3,15 +3,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const errorDiv = document.getElementById('errorMessage');
   const successDiv = document.getElementById('successMessage');
   const updateButton = document.getElementById('updateButton');
+  let redirectTimer = null;
 
-  // Helper functions
+  // Helper functions — profile uses text-only loading (no CSS spinner) so it never gets stuck
+  function clearLoadingState() {
+    form.classList.remove('loading');
+    if (updateButton) {
+      updateButton.classList.remove('is-loading');
+      updateButton.disabled = false;
+      updateButton.textContent = 'Update Profile';
+    }
+  }
+
   function showError(message) {
     errorDiv.textContent = message;
     errorDiv.style.display = 'flex';
     successDiv.style.display = 'none';
-    form.classList.remove('loading');
-    updateButton.disabled = false;
-    updateButton.textContent = 'Update Profile';
+    clearLoadingState();
     errorDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
@@ -19,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     successDiv.textContent = message;
     successDiv.style.display = 'flex';
     errorDiv.style.display = 'none';
+    clearLoadingState();
+    
   }
 
   function hideMessages() {
@@ -104,8 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Show loading state
-    form.classList.add('loading');
+    // Show loading state without spinner CSS classes
     updateButton.disabled = true;
     updateButton.textContent = 'Updating...';
 
@@ -118,17 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(res => res.json())
     .then(data => {
       if (data.status === 'success') {
-        const updatedFields = data.updated_fields || [];
-        const fieldNames = updatedFields.map(field => {
-          return field.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
-        }).join(', ');
-        
-        showSuccess(`Profile updated successfully! Updated: ${fieldNames}`);
-        
-        // Reload user data to reflect changes
-        setTimeout(() => {
-          loadUserData();
-        }, 1000);
+        showSuccess('Profile updated successfully! Redirecting to matches...');
+        if (redirectTimer) {
+          clearTimeout(redirectTimer);
+        }
+        redirectTimer = setTimeout(() => {
+          window.location.href = '/OnlineLanguageBuddyFinder/index.php?page=matches';
+        }, 1200);
       } 
       else if (data.status === 'noop') {
         showError('No changes detected. Please modify at least one field before updating.');

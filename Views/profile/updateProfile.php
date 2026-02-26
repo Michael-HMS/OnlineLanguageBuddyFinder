@@ -72,4 +72,4 @@
   </div>
 </div>
 
-<script src="/OnlineLanguageBuddyFinder/Views/profile/updateProfile.js"></script>
+<script src="/OnlineLanguageBuddyFinder/Views/profile/updateProfile.js?v=20260227"></script>
