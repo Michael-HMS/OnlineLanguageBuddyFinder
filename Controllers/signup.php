@@ -41,7 +41,7 @@ if ($success) {
     $_SESSION['user_id'] = $user_id;
 
     // Redirect to matches or homepage
-   header("Location: /OnlineLanguageBuddyFinder/index.php?page=matches");
+   header("Location: /index.php?page=matches");
 exit;
 
 } else {
