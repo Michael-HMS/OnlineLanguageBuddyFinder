@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/OnlineLanguageBuddyFinder/Views/styles/auth.css">
+<link rel="stylesheet" href="/Views/styles/auth.css">
 
 <div class="auth-container">
   <div class="auth-card">
@@ -67,9 +67,9 @@
     </form>
 
     <div class="auth-footer">
-      <p><a href="/OnlineLanguageBuddyFinder/index.php?page=matches">← Back to Matches</a></p>
+      <p><a href="/index.php?page=matches">← Back to Matches</a></p>
     </div>
   </div>
 </div>
 
-<script src="/OnlineLanguageBuddyFinder/Views/profile/updateProfile.js?v=20260227"></script>
+<script src="/Views/profile/updateProfile.js?v=20260227"></script>

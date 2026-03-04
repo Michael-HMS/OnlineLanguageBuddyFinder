@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('matchesContainer');
 
   // Fetch matches from backend
-  fetch('/OnlineLanguageBuddyFinder/Controllers/matchUsers.php')
+  fetch('/Controllers/matchUsers.php')
     .then(res => res.json())
     .then(data => {
       if (data.status !== 'success') {
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const otherId = e.target.dataset.userId;
 
           // Send request to createConversation.php
-          fetch('/OnlineLanguageBuddyFinder/Controllers/createConversation.php', {
+          fetch('/Controllers/createConversation.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ other_user_id: otherId })
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
           .then(data => {
             if (data.status === 'success') {
               // Redirect to chat page with conversation_id
-             window.location.href = `/OnlineLanguageBuddyFinder/index.php?page=chat&conversation_id=${data.conversation_id}`;
+             window.location.href = `/index.php?page=chat&conversation_id=${data.conversation_id}`;
 
 
             } else {

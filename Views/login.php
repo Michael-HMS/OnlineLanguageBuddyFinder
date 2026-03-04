@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Language Buddy Finder</title>
-  <link rel="stylesheet" href="/OnlineLanguageBuddyFinder/Views/styles/main.css">
-  <link rel="stylesheet" href="/OnlineLanguageBuddyFinder/Views/styles/auth.css">
+  <link rel="stylesheet" href="/Views/styles/main.css">
+  <link rel="stylesheet" href="/Views/styles/auth.css">
 </head>
 <body>
   <div class="auth-container">
@@ -49,7 +49,7 @@
       </form>
 
       <div class="auth-footer">
-        <p>Don't have an account? <a href="/OnlineLanguageBuddyFinder/index.php?page=signup">Sign up here</a></p>
+        <p>Don't have an account? <a href="/index.php?page=signup">Sign up here</a></p>
       </div>
     </div>
   </div>
@@ -118,7 +118,7 @@
 
       const formData = new FormData(form);
 
-      fetch('/OnlineLanguageBuddyFinder/Controllers/login.php', {
+      fetch('/Controllers/login.php', {
         method: 'POST',
         body: formData
       })
@@ -137,7 +137,7 @@
           showSuccess('Login successful! Redirecting...');
           // Redirect after a short delay
           setTimeout(() => {
-            window.location.href = '/OnlineLanguageBuddyFinder/index.php?page=matches';
+            window.location.href = '/index.php?page=matches';
           }, 1000);
         } else {
           // Handle different error types with user-friendly messages

@@ -10,8 +10,8 @@ if (session_status() === PHP_SESSION_NONE) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up - Language Buddy Finder</title>
-  <link rel="stylesheet" href="/OnlineLanguageBuddyFinder/Views/styles/main.css">
-  <link rel="stylesheet" href="/OnlineLanguageBuddyFinder/Views/styles/auth.css">
+  <link rel="stylesheet" href="/Views/styles/main.css">
+  <link rel="stylesheet" href="/Views/styles/auth.css">
 </head>
 <body>
   <div class="auth-container">
@@ -106,7 +106,7 @@ if (session_status() === PHP_SESSION_NONE) {
       </form>
 
       <div class="auth-footer">
-        <p>Already have an account? <a href="/OnlineLanguageBuddyFinder/index.php?page=login">Login here</a></p>
+        <p>Already have an account? <a href="/index.php?page=login">Login here</a></p>
       </div>
     </div>
   </div>
@@ -214,7 +214,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
       const formData = new FormData(form);
 
-      fetch('/OnlineLanguageBuddyFinder/index.php?page=signup_action', {
+      fetch('/index.php?page=signup_action', {
         method: 'POST',
         body: formData
       })
@@ -231,7 +231,7 @@ if (session_status() === PHP_SESSION_NONE) {
           // Success - redirect happened
           showSuccess('Account created successfully! Redirecting...');
           setTimeout(() => {
-            window.location.href = res.url || '/OnlineLanguageBuddyFinder/index.php?page=matches';
+            window.location.href = res.url || '/index.php?page=matches';
           }, 500);
           return null;
         } else {
@@ -241,7 +241,7 @@ if (session_status() === PHP_SESSION_NONE) {
             if (res.ok) {
               showSuccess('Account created successfully! Redirecting...');
               setTimeout(() => {
-                window.location.href = '/OnlineLanguageBuddyFinder/index.php?page=matches';
+                window.location.href = '/index.php?page=matches';
               }, 500);
               return null;
             }

@@ -18,9 +18,9 @@ function requireLogin() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language Buddy Finder - Connect, Learn, Practice</title>
-    <link rel="stylesheet" href="/OnlineLanguageBuddyFinder/Views/styles/main.css">
+    <link rel="stylesheet" href="/Views/styles/main.css">
     <?php if ($page === 'chat'): ?>
-        <link rel="stylesheet" href="/OnlineLanguageBuddyFinder/Views/chat/chat.css">
+        <link rel="stylesheet" href="/Views/chat/chat.css">
     <?php endif; ?>
 </head>
 <body>

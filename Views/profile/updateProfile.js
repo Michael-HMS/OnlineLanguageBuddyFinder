@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Load current user data
   function loadUserData() {
-    fetch('/OnlineLanguageBuddyFinder/Controllers/getProfile.php')
+    fetch('/Controllers/getProfile.php')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success') {
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formData = new FormData(form);
 
-    fetch('/OnlineLanguageBuddyFinder/Controllers/updateProfile.php', {
+    fetch('/Controllers/updateProfile.php', {
       method: 'POST',
       body: formData
     })
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
           clearTimeout(redirectTimer);
         }
         redirectTimer = setTimeout(() => {
-          window.location.href = '/OnlineLanguageBuddyFinder/index.php?page=matches';
+          window.location.href = '/index.php?page=matches';
         }, 1200);
       } 
       else if (data.status === 'noop') {

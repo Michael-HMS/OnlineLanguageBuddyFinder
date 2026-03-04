@@ -13,7 +13,7 @@
   <h1>Your Language Matches</h1>
   <div id="matchesContainer">Loading matches...</div>
 
-  <script src="/OnlineLanguageBuddyFinder/Views/buddy/matches.js" defer></script>
+  <script src="/Views/buddy/matches.js" defer></script>
 
 </body>
 </html>

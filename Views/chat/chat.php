@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Chat</title>
-<link rel="stylesheet" href="/OnlineLanguageBuddyFinder/Views/chat/chat.css">
+<link rel="stylesheet" href="/Views/chat/chat.css">
 
 </head>
 <body>
-<script src="/OnlineLanguageBuddyFinder/Views/chat/chat.js" defer></script>
+<script src="/Views/chat/chat.js" defer></script>
 
 <div class="chat-container">
 

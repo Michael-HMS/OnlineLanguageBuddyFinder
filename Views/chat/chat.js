@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadMessages() {
         if (!currentConversationId) return;
 
-        fetch(`/OnlineLanguageBuddyFinder/Controllers/messages.php?conversation_id=${currentConversationId}`)
+        fetch(`/Controllers/messages.php?conversation_id=${currentConversationId}`)
         .then(res => res.json())
         .then(data => {
             const { messages, otherUser, loggedInUserId } = data; // backend returns loggedInUserId
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('conversation_id', currentConversationId);
         formData.append('message', message);
 
-        fetch('/OnlineLanguageBuddyFinder/Controllers/send.php', {
+        fetch('/Controllers/send.php', {
             method: 'POST',
             body: formData
         })
