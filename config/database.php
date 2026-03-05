@@ -7,10 +7,11 @@ $pass = getenv('DB_PASS');
 $port = getenv('DB_PORT');
 
 // As a safety net, if any of these are missing, you can optionally fall back for local dev:
-if (!$host) $host = 'localhost';
-if (!$db)   $db   = 'language_buddy_finder';
-if (!$user) $user = 'root';
-if (!$port) $port = '3306';
+// (Only fall back if getenv actually returns false, not just an empty string)
+if ($host === false) $host = 'localhost';
+if ($db === false)   $db   = 'language_buddy_finder';
+if ($user === false) $user = 'root';
+if ($port === false) $port = '3306';
 
 try {
     $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8";
