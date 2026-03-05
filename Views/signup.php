@@ -214,7 +214,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
       const formData = new FormData(form);
 
-      fetch('/index.php?page=signup_action', {
+      // Call the signup controller directly so we don't wrap the JSON/redirect in the full HTML layout
+      fetch('/Controllers/signup.php', {
         method: 'POST',
         body: formData
       })
@@ -231,8 +232,8 @@ if (session_status() === PHP_SESSION_NONE) {
           // Success - redirect happened
           showSuccess('Account created successfully! Redirecting...');
           setTimeout(() => {
-            const DEFAULT_REDIRECT_URL = "${process.env.DEFAULT_REDIRECT_URL}"; // Use environment variable
-            window.location.href = res.url || DEFAULT_REDIRECT_URL;
+            // Use the redirect URL from the response if present, otherwise go to matches
+            window.location.href = res.url || '/index.php?page=matches';
           }, 500);
           return null;
         } else {
