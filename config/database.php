@@ -1,8 +1,9 @@
+// mysql://root:EWJYJxQkVxeVnUCOcYhpgKepKqnKcQGa@shinkansen.proxy.rlwy.net:16451/railway
 <?php
-$host = "localhost";
-$db   = "language_buddy_finder";
+$host = "shinkansen.proxy.rlwy.net";
+$db   = "railway";
 $user = "root";
-$pass = "admin"; // agreed password
+$pass = "EWJYJxQkVxeVnUCOcYhpgKepKqnKcQGa"; // agreed password
 
 
 try {
