@@ -1,10 +1,10 @@
 // mysql://root:EWJYJxQkVxeVnUCOcYhpgKepKqnKcQGa@shinkansen.proxy.rlwy.net:16451/railway
 <?php
-$host = "shinkansen.proxy.rlwy.net";
-$db   = "railway";
-$user = "root";
-$pass = "EWJYJxQkVxeVnUCOcYhpgKepKqnKcQGa"; // agreed password
-$port = "16451";
+$host = shinkansen.proxy.rlwy.net;
+$db   = railway;
+$user = root;
+$pass = EWJYJxQkVxeVnUCOcYhpgKepKqnKcQGa; 
+$port = 16451;
 
 try {
     $pdo = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=utf8", $user, $pass);
