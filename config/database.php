@@ -5,16 +5,28 @@ $user = getenv('DB_USER');
 $pass = getenv('DB_PASS');
 $port = getenv('DB_PORT');
 
+// Fallbacks for local development if env vars are missing
+if (!$host) $host = 'localhost';
+if (!$db)   $db   = 'language_buddy_finder';
+if (!$user) $user = 'root';
+if (!$pass) $pass = '';
+if (!$port) $port = '3306';
+
 try {
-    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Example SELECT
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
-    $stmt->execute([1]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    
+    $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8";
+    $pdo = new PDO($dsn, $user, $pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ]);
 } catch (PDOException $e) {
-    die("Database error: " . $e->getMessage());
+    // Always return a clean JSON error so fetch() can handle it
+    if (!headers_sent()) {
+        http_response_code(500);
+        header('Content-Type: application/json');
+    }
+    echo json_encode([
+        'status'  => 'error',
+        'message' => 'Database connection failed.',
+    ]);
+    exit;
 }
