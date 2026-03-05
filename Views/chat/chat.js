@@ -8,10 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const currentConversationId = urlParams.get('conversation_id');
 
+    const API_BASE_URL = "${process.env.API_BASE_URL}"; // Use environment variable
+
     function loadMessages() {
         if (!currentConversationId) return;
 
-        fetch(`/Controllers/messages.php?conversation_id=${currentConversationId}`)
+        fetch(`${API_BASE_URL}/Controllers/messages.php?conversation_id=${currentConversationId}`)
         .then(res => res.json())
         .then(data => {
             const { messages, otherUser, loggedInUserId } = data; // backend returns loggedInUserId

@@ -231,7 +231,8 @@ if (session_status() === PHP_SESSION_NONE) {
           // Success - redirect happened
           showSuccess('Account created successfully! Redirecting...');
           setTimeout(() => {
-            window.location.href = res.url || '/index.php?page=matches';
+            const DEFAULT_REDIRECT_URL = "${process.env.DEFAULT_REDIRECT_URL}"; // Use environment variable
+            window.location.href = res.url || DEFAULT_REDIRECT_URL;
           }, 500);
           return null;
         } else {
