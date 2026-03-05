@@ -1,15 +1,15 @@
 <?php
+// Read only the DB_* variables you defined (both locally via .env and on Railway)
 $host = getenv('DB_HOST');
 $db   = getenv('DB_NAME');
 $user = getenv('DB_USER');
 $pass = getenv('DB_PASS');
 $port = getenv('DB_PORT');
 
-// Fallbacks for local development if env vars are missing
+// As a safety net, if any of these are missing, you can optionally fall back for local dev:
 if (!$host) $host = 'localhost';
 if (!$db)   $db   = 'language_buddy_finder';
 if (!$user) $user = 'root';
-if (!$pass) $pass = '';
 if (!$port) $port = '3306';
 
 try {
@@ -27,6 +27,13 @@ try {
     echo json_encode([
         'status'  => 'error',
         'message' => 'Database connection failed.',
+        // TEMP: include driver error to debug Railway connection issues.
+        'details' => $e->getMessage(),
+        'config'  => [
+            'host' => $host,
+            'db'   => $db,
+            'port' => $port,
+        ],
     ]);
     exit;
 }
